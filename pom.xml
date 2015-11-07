@@ -12,12 +12,13 @@
     <artifactId>assertj-log-parent-pom</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>AssertJ Log: Fluent assertions for java unit testing</name>
+    <name>AssertJ Log Parent: Fluent assertions for java unit testing</name>
     <description>Parent POM for all AssertJ-Log modules</description>
     <inceptionYear>2015</inceptionYear>
 
     <modules>
         <module>assertj-log</module>
+        <module>assertj-log4j</module>
     </modules>
 
     <build>
@@ -55,6 +56,11 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>2.0.2-beta</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
