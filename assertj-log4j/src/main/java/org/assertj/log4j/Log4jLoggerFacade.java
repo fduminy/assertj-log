@@ -10,9 +10,11 @@
  * <p>
  * Copyright 2012-2015 the original author or authors.
  */
-package org.assertj.log;
+package org.assertj.log4j;
 
 import org.apache.log4j.Logger;
+import org.assertj.log.Appender;
+import org.assertj.log.LoggerFacade;
 
 /**
  * @author Fabien DUMINY

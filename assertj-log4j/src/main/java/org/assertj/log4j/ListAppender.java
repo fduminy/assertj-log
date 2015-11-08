@@ -10,11 +10,13 @@
  * <p>
  * Copyright 2012-2015 the original author or authors.
  */
-package org.assertj.log;
+package org.assertj.log4j;
 
 import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.Level;
 import org.apache.log4j.spi.LoggingEvent;
+import org.assertj.log.Appender;
+import org.assertj.log.LogLevel;
 
 import java.util.HashMap;
 import java.util.Map;

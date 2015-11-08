@@ -10,10 +10,14 @@
  * <p>
  * Copyright 2012-2015 the original author or authors.
  */
-package org.assertj.log;
+package org.assertj.log4j;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.assertj.log.Appender;
+import org.assertj.log.LogLevel;
+import org.assertj.log.Messages;
+import org.assertj.log.Throwables;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.experimental.theories.Theories;
