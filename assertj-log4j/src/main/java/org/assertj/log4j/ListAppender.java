@@ -1,13 +1,13 @@
 /**
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * <p>
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * <p>
+ *
  * Copyright 2012-2015 the original author or authors.
  */
 package org.assertj.log4j;
@@ -16,25 +16,13 @@ import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.Level;
 import org.apache.log4j.spi.LoggingEvent;
 import org.assertj.log.Appender;
-import org.assertj.log.LogLevel;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.assertj.log.LogLevelMap;
 
 /**
  * @author Fabien DUMINY
  */
 class ListAppender extends AppenderSkeleton {
-    private static final Map<Level, LogLevel> LEVELS = new HashMap<>(LogLevel.values().length);
-
-    static {
-        LEVELS.put(Level.FATAL, LogLevel.FATAL);
-        LEVELS.put(Level.ERROR, LogLevel.ERROR);
-        LEVELS.put(Level.WARN, LogLevel.WARN);
-        LEVELS.put(Level.INFO, LogLevel.INFO);
-        LEVELS.put(Level.DEBUG, LogLevel.DEBUG);
-        LEVELS.put(Level.TRACE, LogLevel.TRACE);
-    }
+    private static final LogLevelMap<Level> LEVELS = new LogLevelMap<>(Level.FATAL, Level.ERROR, Level.WARN, Level.INFO, Level.DEBUG, Level.TRACE);
 
     private final Appender logs;
 
