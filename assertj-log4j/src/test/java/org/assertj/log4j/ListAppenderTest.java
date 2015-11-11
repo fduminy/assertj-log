@@ -42,7 +42,7 @@ public class ListAppenderTest extends AbstractListAppenderTest<ListAppender, Log
 
     @Override
     protected Logger getLogger(String loggerName) {
-        final Logger logger = Logger.getLogger(getClass());
+        final Logger logger = Logger.getLogger(loggerName);
         logger.setLevel(Level.ALL);
         return logger;
     }
