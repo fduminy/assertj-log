@@ -15,68 +15,40 @@ package org.assertj.logback;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.spi.ILoggingEvent;
-import org.assertj.log.Appender;
-import org.junit.After;
-import org.junit.Test;
+import org.assertj.log.AbstractLoggerFacadeTest;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-
 /**
  * @author Fabien DUMINY
  */
-public class LogbackLoggerFacadeTest {
-    @After
-    public void tearDown() {
-        LogbackLoggerFacade.getRootLogger().detachAndStopAllAppenders();
+public class LogbackLoggerFacadeTest extends AbstractLoggerFacadeTest<ListAppender, LogbackLoggerFacade> {
+    public LogbackLoggerFacadeTest() {
+        super(ListAppender.class);
     }
 
-    @Test
-    public void testInit() throws Exception {
-        new LogbackLoggerFacade();
-
-        assertThat(getAllAppenders(ListAppender.class).size()).isEqualTo(0);
+    protected LogbackLoggerFacade createLoggerFacade() {
+        return new LogbackLoggerFacade();
     }
 
-    @SuppressWarnings("unchecked")
-    @Test
-    public void testSetUp() throws Exception {
-        LogbackLoggerFacade facade = new LogbackLoggerFacade();
-
-        ListAppender appender = facade.setUp(mock(Appender.class));
-
-        assertThat(appender).isNotNull();
-        assertThat(getAllAppenders(ListAppender.class).size()).isEqualTo(1);
-        assertThat(getAllAppenders(ListAppender.class).get(0)).isSameAs(appender);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Test
-    public void testTearDown() throws Exception {
-        LogbackLoggerFacade facade = new LogbackLoggerFacade();
-        ListAppender appender = facade.setUp(mock(Appender.class));
-
-        facade.tearDown(appender);
-
-        assertThat(getAllAppenders(ListAppender.class).size()).isEqualTo(0);
-    }
-
-    private static List<ch.qos.logback.core.Appender<ILoggingEvent>> getAllAppenders(Class<?> clazz) {
-        List<ch.qos.logback.core.Appender<ILoggingEvent>> appenders = new ArrayList<>();
+    protected List<ListAppender> getAllAppenders(Class<ListAppender> clazz) {
+        List<ListAppender> appenders = new ArrayList<>();
         for (Logger logger : ((LoggerContext) LoggerFactory.getILoggerFactory()).getLoggerList()) {
             Iterator<ch.qos.logback.core.Appender<ILoggingEvent>> it = logger.iteratorForAppenders();
             while (it.hasNext()) {
                 final ch.qos.logback.core.Appender<ILoggingEvent> appender = it.next();
                 if (clazz.isInstance(appender)) {
-                    appenders.add(appender);
+                    appenders.add(clazz.cast(appender));
                 }
             }
         }
         return appenders;
+    }
+
+    protected void removeAllAppenders() {
+        LogbackLoggerFacade.getRootLogger().detachAndStopAllAppenders();
     }
 }

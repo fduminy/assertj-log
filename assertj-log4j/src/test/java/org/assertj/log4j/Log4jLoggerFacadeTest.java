@@ -12,63 +12,40 @@
  */
 package org.assertj.log4j;
 
+import org.apache.log4j.Appender;
 import org.apache.log4j.Logger;
-import org.assertj.log.Appender;
-import org.junit.After;
-import org.junit.Test;
+import org.assertj.log.AbstractLoggerFacadeTest;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
+import java.util.List;
 
 /**
  * @author Fabien DUMINY
  */
-public class Log4jLoggerFacadeTest {
-    @After
-    public void tearDown() {
-        Logger.getRootLogger().removeAllAppenders();
+public class Log4jLoggerFacadeTest extends AbstractLoggerFacadeTest<ListAppender, Log4jLoggerFacade> {
+    public Log4jLoggerFacadeTest() {
+        super(ListAppender.class);
     }
 
-    @Test
-    public void testInit() throws Exception {
-        new Log4jLoggerFacade();
-
-        // TODO add support of Enumeration in AbstractListAppender.asList()
-        assertThat(countElementsOfType(Logger.getRootLogger().getAllAppenders(), ListAppender.class)).isEqualTo(0);
+    protected Log4jLoggerFacade createLoggerFacade() {
+        return new Log4jLoggerFacade();
     }
 
     @SuppressWarnings("unchecked")
-    @Test
-    public void testSetUp() throws Exception {
-        Log4jLoggerFacade facade = new Log4jLoggerFacade();
-
-        ListAppender appender = facade.setUp(mock(Appender.class));
-
-        assertThat(appender).isNotNull();
-        assertThat(countElementsOfType(Logger.getRootLogger().getAllAppenders(), ListAppender.class)).isEqualTo(1);
-        assertThat(Logger.getRootLogger().getAllAppenders().nextElement()).isSameAs(appender);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Test
-    public void testTearDown() throws Exception {
-        Log4jLoggerFacade facade = new Log4jLoggerFacade();
-        ListAppender appender = facade.setUp(mock(Appender.class));
-
-        facade.tearDown(appender);
-
-        assertThat(countElementsOfType(Logger.getRootLogger().getAllAppenders(), ListAppender.class)).isEqualTo(0);
-    }
-
-    public static int countElementsOfType(Enumeration<?> appenders, Class<?> clazz) {
-        int count = 0;
-        while (appenders.hasMoreElements()) {
-            if (clazz.isInstance(appenders.nextElement())) {
-                count++;
+    protected List<ListAppender> getAllAppenders(Class<ListAppender> clazz) {
+        List<ListAppender> appenders = new ArrayList<>();
+        Enumeration<Appender> appenderEnum = Logger.getRootLogger().getAllAppenders();
+        while (appenderEnum.hasMoreElements()) {
+            final Appender appender = appenderEnum.nextElement();
+            if (clazz.isInstance(appender)) {
+                appenders.add(clazz.cast(appender));
             }
         }
-        return count;
+        return appenders;
+    }
+
+    protected void removeAllAppenders() {
+        Logger.getRootLogger().removeAllAppenders();
     }
 }
