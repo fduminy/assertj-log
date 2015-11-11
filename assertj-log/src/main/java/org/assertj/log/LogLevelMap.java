@@ -16,25 +16,26 @@ import org.assertj.core.util.Arrays;
 
 /**
  * A map between a {@link LogLevel} and another type of value.
- * @param <L> The class values mapped with a {@link LogLevel}.
+ * @param <L> The class of values mapped with a {@link LogLevel}.
  *
  * @author Fabien DUMINY
  */
 public class LogLevelMap<L> {
     @SuppressWarnings("unchecked")
-    private final L[] levels;
+    private final L[] userValues;
 
     public LogLevelMap(L fatal, L error, L warn, L info, L debug, L trace) {
-        levels = Arrays.array(fatal, error, warn, info, debug, trace);
+        userValues = Arrays.array(fatal, error, warn, info, debug, trace);
     }
 
-    public L get(LogLevel level) {
-        return levels[level.ordinal()];
+    public L get(LogLevel logLevel) {
+        return (logLevel == null) ? null : userValues[logLevel.ordinal()];
     }
 
-    public LogLevel get(L level) {
+    public LogLevel get(L userValue) {
         for (LogLevel logLevel : LogLevel.values()) {
-            if (levels[logLevel.ordinal()].equals(level)) {
+            final L usrValue = userValues[logLevel.ordinal()];
+            if ((usrValue != null) && usrValue.equals(userValue)) {
                 return logLevel;
             }
         }
