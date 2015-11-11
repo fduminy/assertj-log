@@ -19,6 +19,7 @@
     <modules>
         <module>assertj-log</module>
         <module>assertj-log4j</module>
+        <module>assertj-logback</module>
     </modules>
 
     <build>
