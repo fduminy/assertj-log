@@ -10,42 +10,40 @@
  *
  * Copyright 2012-2015 the original author or authors.
  */
-package org.assertj.logback;
+package org.assertj.log4j;
 
-import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.Logger;
-import ch.qos.logback.core.ContextBase;
-import org.assertj.log.*;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.assertj.log.AbstractListAppenderTest;
+import org.assertj.log.Appender;
+import org.assertj.log.LogLevelMap;
+import org.assertj.log.LogMethod;
 
 /**
  * @author Fabien DUMINY
  */
-public class ListAppenderTest extends AbstractListAppenderTest<ListAppender, Logger> {
+public class Log4jListAppenderTest extends AbstractListAppenderTest<Log4jListAppender, Logger> {
     @Override
     protected LogLevelMap<LogMethod<Logger>> createLogMethodMap() {
-        return new LogLevelMap<>(new NullLogMethod<>(), Logger::error, Logger::warn, Logger::info, Logger::debug, Logger::trace);
+        return new LogLevelMap<>(Logger::fatal, Logger::error, Logger::warn, Logger::info, Logger::debug, Logger::trace);
     }
 
     @Override
-    protected ListAppender createAppender(Appender logs) {
-        ListAppender appender = new ListAppender(logs);
-        appender.setContext(new ContextBase());
-        appender.start();
-        LogbackLoggerFacade.getRootLogger().addAppender(appender);
+    protected Log4jListAppender createAppender(Appender logs) {
+        Log4jListAppender appender = new Log4jListAppender(logs);
+        Logger.getRootLogger().addAppender(appender);
         return appender;
     }
 
     @Override
-    protected void removeAppender(ListAppender appender) {
-        LogbackLoggerFacade.getRootLogger().detachAppender(appender);
+    protected void removeAppender(Log4jListAppender appender) {
+        Logger.getRootLogger().removeAllAppenders();
     }
 
     @Override
     protected Logger getLogger(String loggerName) {
-        final Logger logger = (Logger) LoggerFactory.getLogger(loggerName);
+        final Logger logger = Logger.getLogger(loggerName);
         logger.setLevel(Level.ALL);
-        logger.setAdditive(true);
         return logger;
     }
 }

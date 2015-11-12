@@ -21,12 +21,12 @@ import org.assertj.log.LogLevelMap;
 /**
  * @author Fabien DUMINY
  */
-class ListAppender extends AppenderSkeleton {
+class Log4jListAppender extends AppenderSkeleton {
     private static final LogLevelMap<Level> LEVELS = new LogLevelMap<>(Level.FATAL, Level.ERROR, Level.WARN, Level.INFO, Level.DEBUG, Level.TRACE);
 
     private final Appender logs;
 
-    ListAppender(Appender logs) {
+    Log4jListAppender(Appender logs) {
         this.logs = logs;
     }
 

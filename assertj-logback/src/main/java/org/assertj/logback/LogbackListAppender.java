@@ -22,12 +22,12 @@ import org.assertj.log.LogLevelMap;
 /**
  * @author Fabien DUMINY
  */
-class ListAppender extends AppenderBase<ILoggingEvent> {
+class LogbackListAppender extends AppenderBase<ILoggingEvent> {
     private static final LogLevelMap<Level> LEVELS = new LogLevelMap<>(null, Level.ERROR, Level.WARN, Level.INFO, Level.DEBUG, Level.TRACE);
 
     private final Appender logs;
 
-    ListAppender(Appender logs) {
+    LogbackListAppender(Appender logs) {
         this.logs = logs;
     }
 

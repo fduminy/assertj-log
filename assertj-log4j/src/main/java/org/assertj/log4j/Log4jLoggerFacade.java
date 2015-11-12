@@ -19,16 +19,16 @@ import org.assertj.log.LoggerFacade;
 /**
  * @author Fabien DUMINY
  */
-public class Log4jLoggerFacade implements LoggerFacade<ListAppender> {
+public class Log4jLoggerFacade implements LoggerFacade<Log4jListAppender> {
     @Override
-    public ListAppender setUp(Appender events) {
-        ListAppender appender = new ListAppender(events);
+    public Log4jListAppender setUp(Appender events) {
+        Log4jListAppender appender = new Log4jListAppender(events);
         Logger.getRootLogger().addAppender(appender);
         return appender;
     }
 
     @Override
-    public void tearDown(ListAppender appender) {
+    public void tearDown(Log4jListAppender appender) {
         Logger.getRootLogger().removeAppender(appender);
     }
 }

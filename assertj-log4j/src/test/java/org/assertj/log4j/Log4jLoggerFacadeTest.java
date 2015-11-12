@@ -23,9 +23,9 @@ import java.util.List;
 /**
  * @author Fabien DUMINY
  */
-public class Log4jLoggerFacadeTest extends AbstractLoggerFacadeTest<ListAppender, Log4jLoggerFacade> {
+public class Log4jLoggerFacadeTest extends AbstractLoggerFacadeTest<Log4jListAppender, Log4jLoggerFacade> {
     public Log4jLoggerFacadeTest() {
-        super(ListAppender.class);
+        super(Log4jListAppender.class);
     }
 
     protected Log4jLoggerFacade createLoggerFacade() {
@@ -33,8 +33,8 @@ public class Log4jLoggerFacadeTest extends AbstractLoggerFacadeTest<ListAppender
     }
 
     @SuppressWarnings("unchecked")
-    protected List<ListAppender> getAllAppenders(Class<ListAppender> clazz) {
-        List<ListAppender> appenders = new ArrayList<>();
+    protected List<Log4jListAppender> getAllAppenders(Class<Log4jListAppender> clazz) {
+        List<Log4jListAppender> appenders = new ArrayList<>();
         Enumeration<Appender> appenderEnum = Logger.getRootLogger().getAllAppenders();
         while (appenderEnum.hasMoreElements()) {
             final Appender appender = appenderEnum.nextElement();

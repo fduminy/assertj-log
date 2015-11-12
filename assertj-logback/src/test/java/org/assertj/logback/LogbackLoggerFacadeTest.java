@@ -25,17 +25,17 @@ import java.util.List;
 /**
  * @author Fabien DUMINY
  */
-public class LogbackLoggerFacadeTest extends AbstractLoggerFacadeTest<ListAppender, LogbackLoggerFacade> {
+public class LogbackLoggerFacadeTest extends AbstractLoggerFacadeTest<LogbackListAppender, LogbackLoggerFacade> {
     public LogbackLoggerFacadeTest() {
-        super(ListAppender.class);
+        super(LogbackListAppender.class);
     }
 
     protected LogbackLoggerFacade createLoggerFacade() {
         return new LogbackLoggerFacade();
     }
 
-    protected List<ListAppender> getAllAppenders(Class<ListAppender> clazz) {
-        List<ListAppender> appenders = new ArrayList<>();
+    protected List<LogbackListAppender> getAllAppenders(Class<LogbackListAppender> clazz) {
+        List<LogbackListAppender> appenders = new ArrayList<>();
         for (Logger logger : ((LoggerContext) LoggerFactory.getILoggerFactory()).getLoggerList()) {
             Iterator<ch.qos.logback.core.Appender<ILoggingEvent>> it = logger.iteratorForAppenders();
             while (it.hasNext()) {

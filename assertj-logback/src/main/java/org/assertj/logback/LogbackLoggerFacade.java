@@ -20,16 +20,16 @@ import org.slf4j.LoggerFactory;
 /**
  * @author Fabien DUMINY
  */
-public class LogbackLoggerFacade implements LoggerFacade<ListAppender> {
+public class LogbackLoggerFacade implements LoggerFacade<LogbackListAppender> {
     @Override
-    public ListAppender setUp(Appender events) {
-        ListAppender appender = new ListAppender(events);
+    public LogbackListAppender setUp(Appender events) {
+        LogbackListAppender appender = new LogbackListAppender(events);
         getRootLogger().addAppender(appender);
         return appender;
     }
 
     @Override
-    public void tearDown(ListAppender appender) {
+    public void tearDown(LogbackListAppender appender) {
         getRootLogger().detachAppender(appender);
     }
 
