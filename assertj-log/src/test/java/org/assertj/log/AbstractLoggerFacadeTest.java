@@ -21,6 +21,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 /**
+ * @param <A> Class of appender.
+ * @param <LF> Class of {@link LoggerFacade}.
+ *
  * @author Fabien DUMINY
  */
 public abstract class AbstractLoggerFacadeTest<A, LF extends LoggerFacade<A>> {

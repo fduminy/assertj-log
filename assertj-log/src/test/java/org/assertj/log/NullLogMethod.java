@@ -15,6 +15,8 @@ package org.assertj.log;
 import org.junit.Assume;
 
 /**
+ * @param <L> Class of logger.
+ *
  * @author Fabien DUMINY
  */
 public final class NullLogMethod<L> implements LogMethod<L> {

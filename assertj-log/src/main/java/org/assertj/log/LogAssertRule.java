@@ -22,13 +22,15 @@ import java.util.List;
 /**
  * A JUnit {@link TestRule} recording all logs.
  *
+ * @param <A> The class of appender.
+ *
  * @author Fabien DUMINY
  */
-public class LogAssertRule<T> implements TestRule, Appender {
+public class LogAssertRule<A> implements TestRule, Appender {
     private final List<LogEvent> events = new ArrayList<>();
-    private final LoggerFacade<T> loggerFacade;
+    private final LoggerFacade<A> loggerFacade;
 
-    public LogAssertRule(LoggerFacade<T> loggerFacade) {
+    public LogAssertRule(LoggerFacade<A> loggerFacade) {
         this.loggerFacade = loggerFacade;
     }
 
@@ -37,7 +39,7 @@ public class LogAssertRule<T> implements TestRule, Appender {
         return new Statement() {
             @Override
             public void evaluate() throws Throwable {
-                T appender = loggerFacade.setUp(LogAssertRule.this);
+                A appender = loggerFacade.setUp(LogAssertRule.this);
                 try {
                     base.evaluate();
                 } finally {

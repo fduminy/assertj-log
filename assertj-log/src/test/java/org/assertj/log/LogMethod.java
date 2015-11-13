@@ -13,6 +13,8 @@
 package org.assertj.log;
 
 /**
+ * @param <L> Class of logger.
+ *
  * @author Fabien DUMINY
  */
 @FunctionalInterface
