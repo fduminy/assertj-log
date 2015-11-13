@@ -26,17 +26,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <forkMode>always</forkMode>
-                    <includes>
-                        <include>**/*Test.java</include>
-                    </includes>
-                    <argLine>-Xms512m -Xmx512m</argLine>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
     <dependencies>

@@ -13,21 +13,6 @@
     <name>AssertJ-Log4j</name>
     <description>Fluent interface for functional Log4j testing</description>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <forkMode>always</forkMode>
-                    <includes>
-                        <include>**/*Test.java</include>
-                    </includes>
-                    <argLine>-Xms512m -Xmx512m</argLine>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <dependencies>
         <dependency>
             <groupId>org.assertj</groupId>
