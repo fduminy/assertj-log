@@ -13,6 +13,8 @@
 package org.assertj.log;
 
 /**
+ * @param <A> The class of appender.
+ *
  * @author Fabien DUMINY
  */
 public interface LoggerFacade<A> {
