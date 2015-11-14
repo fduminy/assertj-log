@@ -24,7 +24,7 @@ import java.util.logging.LogRecord;
  */
 class JulListAppender extends Handler {
     //TODO add Level.FINEST ?
-    private static final LogLevelMap<Level> LEVELS = new LogLevelMap<>(null, Level.SEVERE, Level.WARNING, Level.INFO, Level.FINE, Level.FINER);
+    static final LogLevelMap<Level> LEVELS = new LogLevelMap<>(null, Level.SEVERE, Level.WARNING, Level.INFO, Level.FINE, Level.FINER);
 
     private final Appender logs;
 

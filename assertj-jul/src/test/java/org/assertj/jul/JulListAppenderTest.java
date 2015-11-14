@@ -35,6 +35,10 @@ public class JulListAppenderTest extends AbstractListAppenderTest<JulListAppende
 
     @Override
     protected LogLevelMap<LogMethod<Logger>> createLogMethodMap() {
+        return getLogMethodMap();
+    }
+
+    static LogLevelMap<LogMethod<Logger>> getLogMethodMap() {
         return new LogLevelMap<>(new NullLogMethod<>(), method(SEVERE), method(WARNING), method(INFO), method(FINE), method(FINER));
     }
 
@@ -57,7 +61,7 @@ public class JulListAppenderTest extends AbstractListAppenderTest<JulListAppende
         return Logger.getLogger(loggerName);
     }
 
-    private LogMethod<Logger> method(Level level) {
+    private static LogMethod<Logger> method(Level level) {
         return (logger, message, throwable) -> logger.log(level, message, throwable);
     }
 }

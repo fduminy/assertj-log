@@ -23,7 +23,7 @@ import org.assertj.log.LogLevelMap;
  * @author Fabien DUMINY
  */
 class LogbackListAppender extends AppenderBase<ILoggingEvent> {
-    private static final LogLevelMap<Level> LEVELS = new LogLevelMap<>(null, Level.ERROR, Level.WARN, Level.INFO, Level.DEBUG, Level.TRACE);
+    static final LogLevelMap<Level> LEVELS = new LogLevelMap<>(null, Level.ERROR, Level.WARN, Level.INFO, Level.DEBUG, Level.TRACE);
 
     private final Appender logs;
 

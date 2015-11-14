@@ -25,6 +25,10 @@ import org.assertj.log.LogMethod;
 public class Log4jListAppenderTest extends AbstractListAppenderTest<Log4jListAppender, Logger> {
     @Override
     protected LogLevelMap<LogMethod<Logger>> createLogMethodMap() {
+        return getLogMethodMap();
+    }
+
+    static LogLevelMap<LogMethod<Logger>> getLogMethodMap() {
         return new LogLevelMap<>(Logger::fatal, Logger::error, Logger::warn, Logger::info, Logger::debug, Logger::trace);
     }
 

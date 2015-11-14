@@ -14,7 +14,6 @@ package org.assertj.logback;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
-import ch.qos.logback.core.ContextBase;
 import org.assertj.log.*;
 import org.slf4j.LoggerFactory;
 
@@ -24,13 +23,17 @@ import org.slf4j.LoggerFactory;
 public class LogbackListAppenderTest extends AbstractListAppenderTest<LogbackListAppender, Logger> {
     @Override
     protected LogLevelMap<LogMethod<Logger>> createLogMethodMap() {
+        return getLogMethodMap();
+    }
+
+    static LogLevelMap<LogMethod<Logger>> getLogMethodMap() {
         return new LogLevelMap<>(new NullLogMethod<>(), Logger::error, Logger::warn, Logger::info, Logger::debug, Logger::trace);
     }
 
     @Override
     protected LogbackListAppender createAppender(Appender logs) {
         LogbackListAppender appender = new LogbackListAppender(logs);
-        appender.setContext(new ContextBase());
+//        appender.setContext(new ContextBase());
         appender.start();
         LogbackLoggerFacade.getRootLogger().addAppender(appender);
         return appender;

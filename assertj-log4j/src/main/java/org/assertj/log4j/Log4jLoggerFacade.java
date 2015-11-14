@@ -12,6 +12,7 @@
  */
 package org.assertj.log4j;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.assertj.log.Appender;
 import org.assertj.log.LoggerFacade;
@@ -24,6 +25,7 @@ public class Log4jLoggerFacade implements LoggerFacade<Log4jListAppender> {
     public Log4jListAppender setUp(Appender events) {
         Log4jListAppender appender = new Log4jListAppender(events);
         Logger.getRootLogger().addAppender(appender);
+        Logger.getRootLogger().setLevel(Level.ALL);
         return appender;
     }
 
