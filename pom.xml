@@ -25,6 +25,7 @@
         <module>assertj-log4j</module>
         <module>assertj-logback</module>
         <module>assertj-jul</module>
+        <module>assertj-log4j2</module>
     </modules>
 
     <build>

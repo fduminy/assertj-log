@@ -60,7 +60,11 @@ abstract public class AbstractListAppenderTest<A, L> {
 
         LOG_METHODS.get(level).log(getLogger(loggerName), message.getMessage(), throwableEnum.getThrowable());
 
-        verify(logs).append(eq(loggerName), eq(level), eq(message.getMessage()), eq(throwableEnum.getThrowable()));
+        verify(logs).append(eq(loggerName), eq(level), equalsMessage(message.getMessage()), eq(throwableEnum.getThrowable()));
         verifyNoMoreInteractions(logs);
+    }
+
+    protected String equalsMessage(String message) {
+        return eq(message);
     }
 }
