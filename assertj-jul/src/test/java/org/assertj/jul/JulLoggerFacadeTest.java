@@ -21,6 +21,8 @@ import java.util.logging.Handler;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
+import static org.assertj.jul.JulLoggerFacade.JUL;
+
 /**
  * @author Fabien DUMINY
  */
@@ -30,7 +32,7 @@ public class JulLoggerFacadeTest extends AbstractLoggerFacadeTest<JulListAppende
     }
 
     protected JulLoggerFacade createLoggerFacade() {
-        return new JulLoggerFacade();
+        return JUL;
     }
 
     protected List<JulListAppender> getAllAppenders(Class<JulListAppender> clazz) {

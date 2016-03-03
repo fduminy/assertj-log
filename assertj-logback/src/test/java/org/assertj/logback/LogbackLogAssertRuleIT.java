@@ -17,6 +17,8 @@ import ch.qos.logback.classic.Logger;
 import org.assertj.log.AbstractLogAssertRuleIT;
 import org.slf4j.LoggerFactory;
 
+import static org.assertj.logback.LogbackLoggerFacade.LOGBACK;
+
 /**
  * @author Fabien DUMINY
  */
@@ -28,7 +30,7 @@ public class LogbackLogAssertRuleIT extends AbstractLogAssertRuleIT {
     public static class LogbackIntegration extends AbstractIntegration<Level, Logger, LogbackListAppender> {
         public LogbackIntegration() {
             super(LogbackListAppender.LEVELS, LogbackListAppenderTest.getLogMethodMap(),
-                    (Logger) LoggerFactory.getLogger(LogbackLogAssertRuleIT.class.getName()), new LogbackLoggerFacade());
+                    (Logger) LoggerFactory.getLogger(LogbackLogAssertRuleIT.class.getName()), LOGBACK);
         }
     }
 }

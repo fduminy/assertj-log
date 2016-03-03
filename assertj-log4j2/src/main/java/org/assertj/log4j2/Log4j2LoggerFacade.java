@@ -24,6 +24,11 @@ import org.assertj.log.LoggerFacade;
  * @author Fabien DUMINY
  */
 public class Log4j2LoggerFacade implements LoggerFacade<Log4j2ListAppender> {
+    public static final Log4j2LoggerFacade LOG4J2 = new Log4j2LoggerFacade();
+
+    private Log4j2LoggerFacade() {
+    }
+
     @Override
     public Log4j2ListAppender setUp(Appender events) {
         final LoggerContext context = getContext();

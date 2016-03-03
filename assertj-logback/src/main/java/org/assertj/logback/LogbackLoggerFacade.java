@@ -22,6 +22,11 @@ import org.slf4j.LoggerFactory;
  * @author Fabien DUMINY
  */
 public class LogbackLoggerFacade implements LoggerFacade<LogbackListAppender> {
+    public static final LogbackLoggerFacade LOGBACK = new LogbackLoggerFacade();
+
+    private LogbackLoggerFacade() {
+    }
+
     @Override
     public LogbackListAppender setUp(Appender events) {
         LogbackListAppender appender = new LogbackListAppender(events);

@@ -19,6 +19,8 @@ import org.assertj.log.AbstractLoggerFacadeTest;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.log4j2.Log4j2LoggerFacade.LOG4J2;
+
 /**
  * @author Fabien DUMINY
  */
@@ -28,7 +30,7 @@ public class Log4J2LoggerFacadeTest extends AbstractLoggerFacadeTest<Log4j2ListA
     }
 
     protected Log4j2LoggerFacade createLoggerFacade() {
-        return new Log4j2LoggerFacade();
+        return LOG4J2;
     }
 
     @SuppressWarnings("unchecked")

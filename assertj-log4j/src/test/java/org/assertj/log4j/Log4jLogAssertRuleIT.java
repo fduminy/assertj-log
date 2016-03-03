@@ -16,6 +16,8 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.assertj.log.AbstractLogAssertRuleIT;
 
+import static org.assertj.log4j.Log4jLoggerFacade.LOG4J;
+
 /**
  * @author Fabien DUMINY
  */
@@ -26,7 +28,7 @@ public class Log4jLogAssertRuleIT extends AbstractLogAssertRuleIT {
 
     public static class Log4jIntegration extends AbstractIntegration<Level, Logger, Log4jListAppender> {
         public Log4jIntegration() {
-            super(Log4jListAppender.LEVELS, Log4jListAppenderTest.getLogMethodMap(), Logger.getLogger(Log4jLogAssertRuleIT.class.getName()), new Log4jLoggerFacade());
+            super(Log4jListAppender.LEVELS, Log4jListAppenderTest.getLogMethodMap(), Logger.getLogger(Log4jLogAssertRuleIT.class.getName()), LOG4J);
         }
     }
 }

@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+import static org.assertj.log4j.Log4jLoggerFacade.LOG4J;
+
 /**
  * @author Fabien DUMINY
  */
@@ -29,7 +31,7 @@ public class Log4jLoggerFacadeTest extends AbstractLoggerFacadeTest<Log4jListApp
     }
 
     protected Log4jLoggerFacade createLoggerFacade() {
-        return new Log4jLoggerFacade();
+        return LOG4J;
     }
 
     @SuppressWarnings("unchecked")

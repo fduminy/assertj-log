@@ -17,6 +17,8 @@ import org.assertj.log.AbstractLogAssertRuleIT;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static org.assertj.jul.JulLoggerFacade.JUL;
+
 /**
  * @author Fabien DUMINY
  */
@@ -27,7 +29,7 @@ public class JulLogAssertRuleIT extends AbstractLogAssertRuleIT {
 
     public static class JulIntegration extends AbstractIntegration<Level, Logger, JulListAppender> {
         public JulIntegration() {
-            super(JulListAppender.LEVELS, JulListAppenderTest.getLogMethodMap(), Logger.getLogger(JulLogAssertRuleIT.class.getName()), new JulLoggerFacade());
+            super(JulListAppender.LEVELS, JulListAppenderTest.getLogMethodMap(), Logger.getLogger(JulLogAssertRuleIT.class.getName()), JUL);
         }
     }
 }

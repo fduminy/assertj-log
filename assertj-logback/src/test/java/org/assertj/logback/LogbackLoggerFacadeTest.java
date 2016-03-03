@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static org.assertj.logback.LogbackLoggerFacade.LOGBACK;
+
 /**
  * @author Fabien DUMINY
  */
@@ -31,7 +33,7 @@ public class LogbackLoggerFacadeTest extends AbstractLoggerFacadeTest<LogbackLis
     }
 
     protected LogbackLoggerFacade createLoggerFacade() {
-        return new LogbackLoggerFacade();
+        return LOGBACK;
     }
 
     protected List<LogbackListAppender> getAllAppenders(Class<LogbackListAppender> clazz) {

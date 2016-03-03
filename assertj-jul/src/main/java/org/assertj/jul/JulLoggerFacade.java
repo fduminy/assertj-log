@@ -22,6 +22,11 @@ import java.util.logging.Logger;
  * @author Fabien DUMINY
  */
 public class JulLoggerFacade implements LoggerFacade<JulListAppender> {
+    public static final JulLoggerFacade JUL = new JulLoggerFacade();
+
+    private JulLoggerFacade() {
+    }
+
     @Override
     public JulListAppender setUp(Appender events) {
         JulListAppender appender = new JulListAppender(events);

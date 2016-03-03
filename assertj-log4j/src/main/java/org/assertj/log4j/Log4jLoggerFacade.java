@@ -21,6 +21,11 @@ import org.assertj.log.LoggerFacade;
  * @author Fabien DUMINY
  */
 public class Log4jLoggerFacade implements LoggerFacade<Log4jListAppender> {
+    public static final Log4jLoggerFacade LOG4J = new Log4jLoggerFacade();
+
+    private Log4jLoggerFacade() {
+    }
+
     @Override
     public Log4jListAppender setUp(Appender events) {
         Log4jListAppender appender = new Log4jListAppender(events);
