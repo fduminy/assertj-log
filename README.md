@@ -6,17 +6,17 @@ that are compact, easy to write, and read like a specification. Tests written us
 ```java
     public class ExampleTest {
         @Rule
-        public final LogAssertRule<A> rule = new LogAssertRule<>(LOG4J);
-        //public final LogAssertRule<A> rule = new LogAssertRule<>(LOG4J2);
-        //public final LogAssertRule<A> rule = new LogAssertRule<>(LOGBACK);
-        //public final LogAssertRule<A> rule = new LogAssertRule<>(JUL);
+        public final LogAssertRule<A> logs = new LogAssertRule<>(LOG4J);
+        //public final LogAssertRule<A> logs = new LogAssertRule<>(LOG4J2);
+        //public final LogAssertRule<A> logs = new LogAssertRule<>(LOGBACK);
+        //public final LogAssertRule<A> logs = new LogAssertRule<>(JUL);
 
         @Test
         public final void testLog() throws Exception {
-            // do something that should log
+            // call a method that should log something
             
             // verify logs
-            new LogAssert(rule).as("logs").hasSize(1);
+            assertThat(logs).hasSize(1);
         }
     }
 ```

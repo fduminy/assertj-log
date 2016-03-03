@@ -21,7 +21,7 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.log.LogAssertions.assertThat;
 
 /**
  *
@@ -60,13 +60,13 @@ abstract public class AbstractLogAssertRuleIT {
         private final LG logger;
 
         @Rule
-        public final LogAssertRule<A> rule;
+        public final LogAssertRule<A> logs;
 
         protected AbstractIntegration(LogLevelMap<LV> levels, LogLevelMap<LogMethod<LG>> methods, LG logger, LoggerFacade<A> loggerFacade) {
             this.levels = levels;
             this.methods = methods;
             this.logger = logger;
-            this.rule = new LogAssertRule<>(loggerFacade);
+            this.logs = new LogAssertRule<>(loggerFacade);
         }
 
         @Theory
@@ -78,7 +78,7 @@ abstract public class AbstractLogAssertRuleIT {
 
             methods.get(logLevel).log(logger, message.getMessage(), throwableEnum.getThrowable());
 
-            new LogAssert(rule).as("logs").hasSize(1);
+            assertThat(logs).hasSize(1);
         }
     }
 }
