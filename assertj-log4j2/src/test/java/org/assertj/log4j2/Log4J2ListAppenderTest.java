@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
  *
@@ -8,9 +8,13 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright 2012-2015 the original author or authors.
+ * Copyright 2012-2018 the original author or authors.
  */
 package org.assertj.log4j2;
+
+import static org.mockito.ArgumentMatchers.argThat;
+
+import java.util.Objects;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -23,10 +27,6 @@ import org.assertj.log.LogMethod;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.mockito.internal.hamcrest.HamcrestArgumentMatcher;
-
-import java.util.Objects;
-
-import static org.mockito.ArgumentMatchers.argThat;
 
 /**
  * @author Fabien DUMINY
