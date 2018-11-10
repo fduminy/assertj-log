@@ -25,7 +25,7 @@ import static org.mockito.Mockito.*;
  * @author Fabien DUMINY
  */
 public class LogAssertTest {
-    @Test
+    @SuppressWarnings("ResultOfMethodCallIgnored") @Test
     public void testInit() {
         // prepare
         LogAssertRule rule = mock(LogAssertRule.class);

@@ -15,7 +15,7 @@ package org.assertj.log;
 /**
  * @author Fabien DUMINY
  */
-@SuppressWarnings("ThrowableInstanceNeverThrown")
+@SuppressWarnings({ "ThrowableInstanceNeverThrown", "unused" })
 public enum Throwables {
     NULL_THROWABLE(null),
     THROWABLE(new Exception("error message"));

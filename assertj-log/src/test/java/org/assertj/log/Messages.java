@@ -15,6 +15,7 @@ package org.assertj.log;
 /**
  * @author Fabien DUMINY
  */
+@SuppressWarnings("unused")
 public enum Messages {
     NULL_MESSAGE(null),
     MESSAGE("error message");

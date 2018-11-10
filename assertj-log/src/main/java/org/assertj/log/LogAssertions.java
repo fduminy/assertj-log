@@ -21,6 +21,7 @@ import java.util.Objects;
  *
  * @author Fabien DUMINY
  */
+@SuppressWarnings("WeakerAccess")
 public class LogAssertions extends Assertions {
     public static LogAssert assertThat(LogAssertRule logAssertRule) {
         Objects.requireNonNull(logAssertRule, "logAssertRule");

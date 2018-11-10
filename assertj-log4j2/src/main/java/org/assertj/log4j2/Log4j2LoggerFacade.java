@@ -49,7 +49,7 @@ public class Log4j2LoggerFacade implements LoggerFacade<Log4j2ListAppender> {
         return getContext().getConfiguration().getRootLogger();
     }
 
-    static LoggerContext getContext() {
+    private static LoggerContext getContext() {
         return (LoggerContext) LogManager.getContext(false);
     }
 }

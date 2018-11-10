@@ -20,7 +20,7 @@ import org.junit.Assume;
  * @author Fabien DUMINY
  */
 public final class NullLogMethod<L> implements LogMethod<L> {
-    @Override
+    @SuppressWarnings("ConstantConditions") @Override
     public void log(L logger, String message, Throwable throwable) {
         Assume.assumeTrue(false); // force leaving the test without failure/error
     }
