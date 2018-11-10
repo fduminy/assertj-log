@@ -48,7 +48,7 @@ public abstract class AbstractLoggerFacadeTest<A, LF extends LoggerFacade<A>> {
     public final void testInit() throws Exception {
         createLoggerFacade();
 
-        assertThat(getAllAppenders(appenderClass).size()).isEqualTo(0);
+        assertThat(getAllAppenders(appenderClass)).isEmpty();
     }
 
     @SuppressWarnings("unchecked")
@@ -59,8 +59,7 @@ public abstract class AbstractLoggerFacadeTest<A, LF extends LoggerFacade<A>> {
         A appender = facade.setUp(mock(Appender.class));
 
         assertThat(appender).isNotNull();
-        assertThat(getAllAppenders(appenderClass).size()).isEqualTo(1);
-        assertThat(getAllAppenders(appenderClass).get(0)).isSameAs(appender);
+        assertThat(getAllAppenders(appenderClass)).containsExactly(appender);
     }
 
     @SuppressWarnings("unchecked")
@@ -71,6 +70,6 @@ public abstract class AbstractLoggerFacadeTest<A, LF extends LoggerFacade<A>> {
 
         facade.tearDown(appender);
 
-        assertThat(getAllAppenders(appenderClass).size()).isEqualTo(0);
+        assertThat(getAllAppenders(appenderClass)).isEmpty();
     }
 }
