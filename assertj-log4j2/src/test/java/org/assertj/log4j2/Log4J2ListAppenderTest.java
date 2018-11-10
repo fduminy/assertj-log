@@ -22,9 +22,11 @@ import org.assertj.log.LogLevelMap;
 import org.assertj.log.LogMethod;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
-import org.mockito.Matchers;
+import org.mockito.internal.hamcrest.HamcrestArgumentMatcher;
 
 import java.util.Objects;
+
+import static org.mockito.ArgumentMatchers.argThat;
 
 /**
  * @author Fabien DUMINY
@@ -60,7 +62,7 @@ public class Log4J2ListAppenderTest extends AbstractListAppenderTest<Log4j2ListA
 
     @Override
     protected String equalsMessage(String message) {
-        return Matchers.argThat(new BaseMatcher<String>() {
+        return argThat(new HamcrestArgumentMatcher<>(new BaseMatcher<String>() {
             @Override
             public void describeTo(Description description) {
                 description.appendText("equals(").appendValue(message).appendText(")");
@@ -78,6 +80,6 @@ public class Log4J2ListAppenderTest extends AbstractListAppenderTest<Log4j2ListA
                 }
                 return Objects.equals(actualMessage, message);
             }
-        });
+        }));
     }
 }
