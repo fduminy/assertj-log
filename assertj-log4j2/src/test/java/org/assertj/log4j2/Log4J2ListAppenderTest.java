@@ -63,7 +63,7 @@ public class Log4J2ListAppenderTest extends AbstractListAppenderTest<Log4j2ListA
         return Matchers.argThat(new BaseMatcher<String>() {
             @Override
             public void describeTo(Description description) {
-                description.appendText("equals").appendValue(message);
+                description.appendText("equals(").appendValue(message).appendText(")");
             }
 
             @Override
@@ -72,7 +72,11 @@ public class Log4J2ListAppenderTest extends AbstractListAppenderTest<Log4j2ListA
                     return false;
                 }
 
-                return Objects.equals(((Message) item).getFormattedMessage(), message);
+                String actualMessage = ((Message) item).getFormattedMessage();
+                if (Objects.equals(actualMessage, "null")) {
+                    actualMessage = null;
+                }
+                return Objects.equals(actualMessage, message);
             }
         });
     }
