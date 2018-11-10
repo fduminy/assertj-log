@@ -32,7 +32,7 @@ import static org.mockito.Mockito.*;
 public class LogAssertRuleTest {
     @SuppressWarnings("unchecked")
     @Test
-    public void testInit() throws Exception {
+    public void testInit() {
         LogAssertRule<String> rule = new LogAssertRule<>(mock(LoggerFacade.class));
 
         assertThat(rule.getEvents()).isEmpty();

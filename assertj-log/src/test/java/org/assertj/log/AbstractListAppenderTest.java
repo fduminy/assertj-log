@@ -54,7 +54,7 @@ abstract public class AbstractListAppenderTest<A, L> {
     }
 
     @Theory
-    public final void testLog(LogLevel level, Messages message, Throwables throwableEnum) throws Exception {
+    public final void testLog(LogLevel level, Messages message, Throwables throwableEnum) {
         System.out.println("testLog(" + level + ", " + message + ", " + throwableEnum + ")");
         final String loggerName = getClass().getName();
 

@@ -45,7 +45,7 @@ public abstract class AbstractLoggerFacadeTest<A, LF extends LoggerFacade<A>> {
     }
 
     @Test
-    public final void testInit() throws Exception {
+    public final void testInit() {
         createLoggerFacade();
 
         assertThat(getAllAppenders(appenderClass)).isEmpty();
@@ -53,7 +53,7 @@ public abstract class AbstractLoggerFacadeTest<A, LF extends LoggerFacade<A>> {
 
     @SuppressWarnings("unchecked")
     @Test
-    public final void testSetUp() throws Exception {
+    public final void testSetUp() {
         LF facade = createLoggerFacade();
 
         A appender = facade.setUp(mock(Appender.class));
@@ -64,7 +64,7 @@ public abstract class AbstractLoggerFacadeTest<A, LF extends LoggerFacade<A>> {
 
     @SuppressWarnings("unchecked")
     @Test
-    public final void testTearDown() throws Exception {
+    public final void testTearDown() {
         LF facade = createLoggerFacade();
         A appender = facade.setUp(mock(Appender.class));
 

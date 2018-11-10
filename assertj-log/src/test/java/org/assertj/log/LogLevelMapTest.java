@@ -27,7 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(Theories.class)
 public class LogLevelMapTest {
     @Theory
-    public void testGet_userValue_notNullArg(UserValue nullValue) throws Exception {
+    public void testGet_userValue_notNullArg(UserValue nullValue) {
         LogLevelMap<UserValue> map = createLogLevelMap(nullValue);
 
         LogLevel logLevel = map.get(nullValue);
@@ -36,7 +36,7 @@ public class LogLevelMapTest {
     }
 
     @Theory
-    public void testGet_userValue_nullInConstructor(UserValue userValue) throws Exception {
+    public void testGet_userValue_nullInConstructor(UserValue userValue) {
         LogLevelMap<UserValue> map = createLogLevelMap(null);
 
         LogLevel logLevel = map.get(userValue);
@@ -45,7 +45,7 @@ public class LogLevelMapTest {
     }
 
     @Test
-    public void testGet_userLevel_nullArg() throws Exception {
+    public void testGet_userLevel_nullArg() {
         LogLevelMap<UserValue> map = createLogLevelMap(null);
 
         LogLevel logLevel = map.get((UserValue) null);
@@ -54,7 +54,7 @@ public class LogLevelMapTest {
     }
 
     @Theory
-    public void testGet_logLevel_notNullArg(UserValue expectedUserValue) throws Exception {
+    public void testGet_logLevel_notNullArg(UserValue expectedUserValue) {
         LogLevelMap<UserValue> map = createLogLevelMap(null);
 
         UserValue userValue = map.get(expectedUserValue.logLevel);
@@ -63,7 +63,7 @@ public class LogLevelMapTest {
     }
 
     @Theory
-    public void testGet_logLevel_nullInConstructor(UserValue nullValue) throws Exception {
+    public void testGet_logLevel_nullInConstructor(UserValue nullValue) {
         LogLevelMap<UserValue> map = createLogLevelMap(nullValue);
 
         UserValue userValue = map.get(nullValue.logLevel);
@@ -72,7 +72,7 @@ public class LogLevelMapTest {
     }
 
     @Test
-    public void testGet_logLevel_nullArg() throws Exception {
+    public void testGet_logLevel_nullArg() {
         LogLevelMap<UserValue> map = createLogLevelMap(null);
 
         UserValue userValue = map.get((LogLevel) null);

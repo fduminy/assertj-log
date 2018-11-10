@@ -26,7 +26,7 @@ import static org.mockito.Mockito.*;
  */
 public class LogAssertTest {
     @Test
-    public void testInit() throws Exception {
+    public void testInit() {
         // prepare
         LogAssertRule rule = mock(LogAssertRule.class);
 
@@ -39,7 +39,7 @@ public class LogAssertTest {
     }
 
     @Test
-    public void testHasSize() throws Exception {
+    public void testHasSize() {
         List<LogEvent> events = new ArrayList<>();
         LogAssertRule rule = mock(LogAssertRule.class);
         when(rule.getEvents()).thenReturn(events);

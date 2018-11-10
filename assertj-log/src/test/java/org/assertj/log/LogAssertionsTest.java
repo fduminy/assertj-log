@@ -36,7 +36,7 @@ public class LogAssertionsTest {
     private LogAssertRule logs;
 
     @Test
-    public void testAssertThat() throws Exception {
+    public void testAssertThat() {
         LogAssert logAssert = LogAssertions.assertThat(logs);
 
         assertThat(logAssert).isNotNull();
@@ -44,7 +44,7 @@ public class LogAssertionsTest {
     }
 
     @Test
-    public void testAssertThat_nullRule() throws Exception {
+    public void testAssertThat_nullRule() {
         thrown.expect(NullPointerException.class);
         thrown.expectMessage("logAssertRule");
 

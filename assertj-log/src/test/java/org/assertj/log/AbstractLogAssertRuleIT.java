@@ -70,7 +70,7 @@ abstract public class AbstractLogAssertRuleIT {
         }
 
         @Theory
-        public final void testLog(LogLevel logLevel, Messages message, Throwables throwableEnum) throws Exception {
+        public final void testLog(LogLevel logLevel, Messages message, Throwables throwableEnum) {
             System.out.println("testLog(" + logLevel + ", " + message + ", " + throwableEnum + ")");
 
             final LV level = levels.get(logLevel);
