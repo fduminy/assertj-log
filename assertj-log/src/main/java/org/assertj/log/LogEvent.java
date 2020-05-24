@@ -15,7 +15,7 @@ package org.assertj.log;
 /**
  * @author Fabien DUMINY
  */
-class LogEvent {
+public class LogEvent {
     private final LogLevel level;
     private final String loggerName;
     private final String message;

@@ -55,7 +55,7 @@ public class LogAssertRule<A> implements TestRule, Appender {
         events.add(new LogEvent(level, loggerName, message, throwable));
     }
 
-    List<LogEvent> getEvents() {
+    public List<LogEvent> getEvents() {
         return events;
     }
 }
